@@ -1,8 +1,8 @@
 package Classifier
 
 import (
-	"Decision_Classifier/Functions"
-	"Decision_Classifier/Struct"
+	"github.com/Darklabel91/Decision_Classifier/Functions"
+	"github.com/Darklabel91/Decision_Classifier/Struct"
 )
 
 func Decision_Classifier(ementaJulgado string, identifier string, court string) Struct.Infered_decision {
