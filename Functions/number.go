@@ -2,51 +2,51 @@ package Functions
 
 import "strings"
 
-func VerificaNumero(texto string) bool {
-	var retorno bool = false
-	var letras [28]string = [28]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "w", "y", "z", "/", ")"}
-	var numero [10]string = [10]string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
-	for i := 0; i < len(numero); i++ {
-		if strings.Contains(texto, numero[i]) {
-			retorno = true
+func Number(text string) bool {
+	var ret bool = false
+	var letters [28]string = [28]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "w", "y", "z", "/", ")"}
+	var numbers [10]string = [10]string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
+	for i := 0; i < len(numbers); i++ {
+		if strings.Contains(text, numbers[i]) {
+			ret = true
 		}
 	}
-	if retorno {
-		for a := 0; a < len(letras); a++ {
-			if strings.Contains(texto, "eros") {
-				retorno = true
+	if ret {
+		for a := 0; a < len(letters); a++ {
+			if strings.Contains(text, "eros") {
+				ret = true
 			} else {
-				if strings.Contains(texto, letras[a]) {
-					retorno = false
+				if strings.Contains(text, letters[a]) {
+					ret = false
 				}
 			}
 		}
 	}
-	return retorno
+	return ret
 }
 
-func AnalisaNumero(ementa string, char int) string {
-	var retorno string
-	tamanho := len(ementa)
-	texto := SelecionaUltimosChar(ementa, tamanho*2)
-	if tamanho < char {
-		retorno = "Sem Informação"
+func NumberAnalysis(summary string, char int) string {
+	var ret string
+	length := len(summary)
+	text := SelectLastChars(summary, length*2)
+	if length < char {
+		ret = "Sem Informação"
 	} else {
-		if VerificaReexame(texto, char-26) {
-			retorno = "Reexame Necessário"
-		} else if VerificaDiligencia(texto, char-26) {
-			retorno = "Convertido em Diligência"
-		} else if VerificaPrejudicado(texto, char-26) {
-			retorno = "Prejudicado"
-		} else if VerificaParcial(texto, char-26) {
-			retorno = "Parcial Procedente"
-		} else if VerificaImprocedente(texto, char-26) {
-			retorno = "Improcedente"
-		} else if VerificaProcedente(texto, char-26) {
-			retorno = "Procedente"
+		if ExOfficioReview(text, char-26) {
+			ret = "Reexame Necessário"
+		} else if Diligence(text, char-26) {
+			ret = "Convertido em Diligência"
+		} else if Affected(text, char-26) {
+			ret = "Prejudicado"
+		} else if Partial(text, char-26) {
+			ret = "Parcial Procedente"
+		} else if Groundless(text, char-26) {
+			ret = "Improcedente"
+		} else if HasGround(text, char-26) {
+			ret = "Procedente"
 		} else {
-			retorno = "Não Mapeado"
+			ret = "Não Mapeado"
 		}
 	}
-	return retorno
+	return ret
 }

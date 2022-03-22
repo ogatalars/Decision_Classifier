@@ -2,20 +2,20 @@ package Functions
 
 import "strings"
 
-func VerificaReexame(texto string, char int) bool {
-	var retorno bool = false
-	var reexame []string
+func ExOfficioReview(text string, char int) bool {
+	var ret bool = false
+	var exOfficioReview []string
 	if char < 17 {
-		reexame = append(reexame,
+		exOfficioReview = append(exOfficioReview,
 			"reexame necessário", "xame necessário")
 	} else {
-		reexame = append(reexame,
+		exOfficioReview = append(exOfficioReview,
 			"reexame necessário")
 	}
-	for i := 0; i < len(reexame); i++ {
-		if strings.Contains(texto, reexame[i]) {
-			retorno = true
+	for i := 0; i < len(exOfficioReview); i++ {
+		if strings.Contains(text, exOfficioReview[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }

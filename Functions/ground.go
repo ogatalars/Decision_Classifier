@@ -2,11 +2,11 @@ package Functions
 
 import "strings"
 
-func VerificaProcedente(texto string, char int) bool {
-	var retorno bool = false
-	var procedente []string
+func HasGround(text string, char int) bool {
+	var ret bool = false
+	var hasGround []string
 	if char < 17 {
-		procedente = append(procedente,
+		hasGround = append(hasGround,
 			"absolver",
 			"absolvição",
 			"absolvida",
@@ -66,7 +66,7 @@ func VerificaProcedente(texto string, char int) bool {
 			"rovido",
 			"sentença anulada")
 	} else {
-		procedente = append(procedente,
+		hasGround = append(hasGround,
 			"absolver",
 			"absolvição",
 			"absolvida",
@@ -118,10 +118,10 @@ func VerificaProcedente(texto string, char int) bool {
 			"rovido",
 			"sentença anulada")
 	}
-	for i := 0; i < len(procedente); i++ {
-		if strings.Contains(texto, procedente[i]) {
-			retorno = true
+	for i := 0; i < len(hasGround); i++ {
+		if strings.Contains(text, hasGround[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }

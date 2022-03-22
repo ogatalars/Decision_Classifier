@@ -2,11 +2,11 @@ package Functions
 
 import "strings"
 
-func VerificaPrejudicado(texto string, char int) bool {
-	var retorno bool = false
-	var prejudicado []string
+func Affected(text string, char int) bool {
+	var ret bool = false
+	var affected []string
 	if char < 17 {
-		prejudicado = append(prejudicado,
+		affected = append(affected,
 			"dicado",
 			"extinção da punibilidade",
 			"icado",
@@ -17,7 +17,7 @@ func VerificaPrejudicado(texto string, char int) bool {
 			"perda superveniente do objeto",
 			"prejudicando o exame")
 	} else {
-		prejudicado = append(prejudicado,
+		affected = append(affected,
 			"extinção da punibilidade",
 			"perda do objeto",
 			"prejudicad",
@@ -26,10 +26,10 @@ func VerificaPrejudicado(texto string, char int) bool {
 			"perda superveniente do objeto",
 			"prejudicando o exame")
 	}
-	for i := 0; i < len(prejudicado); i++ {
-		if strings.Contains(texto, prejudicado[i]) {
-			retorno = true
+	for i := 0; i < len(affected); i++ {
+		if strings.Contains(text, affected[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }

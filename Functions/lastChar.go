@@ -2,12 +2,12 @@ package Functions
 
 import "strings"
 
-func SelecionaUltimosChar(ementa string, char int) string {
-	var textoFinal string
-	if len(ementa) >= char {
-		textoFinal = strings.ToLower(ementa[len(ementa)-char:])
+func SelectLastChars(summary string, char int) string {
+	var finalText string
+	if len(summary) >= char {
+		finalText = strings.ToLower(summary[len(summary)-char:])
 	} else {
-		textoFinal = "Ementa pequena"
+		finalText = "Ementa pequena"
 	}
-	return textoFinal
+	return finalText
 }

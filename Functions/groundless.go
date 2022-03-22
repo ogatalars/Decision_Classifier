@@ -2,11 +2,11 @@ package Functions
 
 import "strings"
 
-func VerificaImprocedente(texto string, char int) bool {
-	var retorno bool = false
-	var improcedente []string
+func Groundless(text string, char int) bool {
+	var ret bool = false
+	var groundless []string
 	if char < 17 {
-		improcedente = append(improcedente,
+		groundless = append(groundless,
 			"a-se provimento",
 			"acórdão confirmado",
 			"afastad",
@@ -110,7 +110,7 @@ func VerificaImprocedente(texto string, char int) bool {
 			"sem efeito modificativo",
 			"sentença confirmada")
 	} else {
-		improcedente = append(improcedente,
+		groundless = append(groundless,
 			"acórdão confirmado",
 			"afastad",
 			"de nenhum deles se conhece",
@@ -190,10 +190,10 @@ func VerificaImprocedente(texto string, char int) bool {
 			"sem efeitos modificativos",
 			"sentença confirmada")
 	}
-	for i := 0; i < len(improcedente); i++ {
-		if strings.Contains(texto, improcedente[i]) {
-			retorno = true
+	for i := 0; i < len(groundless); i++ {
+		if strings.Contains(text, groundless[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }

@@ -2,11 +2,11 @@ package Functions
 
 import "strings"
 
-func VerificaParcial(texto string, char int) bool {
-	var retorno bool = false
-	var parcial []string
+func Partial(text string, char int) bool {
+	var ret = false
+	var partial []string
 	if char < 17 {
-		parcial = append(parcial,
+		partial = append(partial,
 			"adequação parcial",
 			"almente mantid",
 			"arte conhecid",
@@ -37,7 +37,7 @@ func VerificaParcial(texto string, char int) bool {
 			"reformada parcialmente",
 			"te provid")
 	} else {
-		parcial = append(parcial,
+		partial = append(partial,
 			"adequação parcial",
 			"em parte",
 			"nessa parte",
@@ -63,10 +63,10 @@ func VerificaParcial(texto string, char int) bool {
 			"provido em parte",
 			"reformada parcialmente")
 	}
-	for i := 0; i < len(parcial); i++ {
-		if strings.Contains(texto, parcial[i]) {
-			retorno = true
+	for i := 0; i < len(partial); i++ {
+		if strings.Contains(text, partial[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }

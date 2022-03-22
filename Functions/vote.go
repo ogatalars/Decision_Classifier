@@ -2,32 +2,32 @@ package Functions
 
 import "strings"
 
-func VerificaVoto(texto string) bool {
-	var retorno bool = false
-	var voto [1]string = [1]string{
+func Vote(text string) bool {
+	var ret = false
+	var vote = [1]string{
 		"voto n"}
-	for i := 0; i < len(voto); i++ {
-		if strings.Contains(texto, voto[i]) {
-			retorno = true
+	for i := 0; i < len(vote); i++ {
+		if strings.Contains(text, vote[i]) {
+			ret = true
 		}
 	}
-	return retorno
+	return ret
 }
 
-func AnalisaVoto(ementaJulgado string, char int) string {
-	texto := SelecionaUltimosChar(ementaJulgado, char)
+func VoteAnalysis(summary string, char int) string {
+	text := SelectLastChars(summary, char)
 	var tipo string
-	if VerificaReexame(texto, char-24) {
+	if ExOfficioReview(text, char-24) {
 		tipo = "Reexame Necessário"
-	} else if VerificaDiligencia(texto, char-24) {
+	} else if Diligence(text, char-24) {
 		tipo = "Convertido em Diligência"
-	} else if VerificaPrejudicado(texto, char-24) {
+	} else if Affected(text, char-24) {
 		tipo = "Prejudicado"
-	} else if VerificaParcial(texto, char-24) {
+	} else if Partial(text, char-24) {
 		tipo = "Parcial Procedente"
-	} else if VerificaImprocedente(texto, char-24) {
+	} else if Groundless(text, char-24) {
 		tipo = "Improcedente"
-	} else if VerificaProcedente(texto, char-24) {
+	} else if HasGround(text, char-24) {
 		tipo = "Procedente"
 	} else {
 		tipo = "Não Mapeado"
