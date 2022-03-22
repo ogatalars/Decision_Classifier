@@ -13,17 +13,14 @@ func ReadCsvFile(filePath string) []Struct.Raw_decision {
 	csvFile, err := os.Open(filePath)
 	Error.CheckError(err)
 
-	defer func(csvFile *os.File) {
-		err := csvFile.Close()
-		if err != nil {
+	defer csvFile.Close()
 
-		}
-	}(csvFile)
+	csvLines := csv.NewReader(csvFile)
+	csvLines.Comma = ';'
+	csvData, err1 := csvLines.ReadAll()
+	Error.CheckError(err1)
 
-	csvLines, err0 := csv.NewReader(csvFile).ReadAll()
-	Error.CheckError(err0)
-
-	for _, line := range csvLines {
+	for _, line := range csvData {
 
 		emp := Struct.Raw_decision{
 			Summary:    line[2],

@@ -2,6 +2,7 @@ package CSV
 
 import (
 	"fmt"
+	"github.com/Darklabel91/Decision_Classifier/Classifier"
 	"github.com/Darklabel91/Decision_Classifier/Struct"
 	"time"
 )
@@ -15,7 +16,24 @@ var hasGrounds []Struct.Infered_decision
 var noSummary []Struct.Infered_decision
 var notMapped []Struct.Infered_decision
 
-func DataComp(decision Struct.Infered_decision) {
+func Loop(decisions []Struct.Raw_decision) {
+	var result []Struct.Infered_decision
+	start := time.Now()
+
+	for i := 0; i < len(decisions); i++ {
+		retorno := Classifier.Decision_Classifier(decisions[i].Summary, decisions[i].Identifier, decisions[i].Court)
+		result = append(result, retorno)
+		dataComp(retorno)
+	}
+
+	finish := time.Since(start).Minutes()
+	fmt.Println(len(decisions), " - Classified in ", finish, "minutes")
+
+	exportData(result)
+
+}
+
+func dataComp(decision Struct.Infered_decision) {
 	if decision.Class == "Reexame Necessário" {
 		exofficioReview = append(exofficioReview, decision)
 	} else if decision.Class == "Convertido em Diligência" {
@@ -35,7 +53,7 @@ func DataComp(decision Struct.Infered_decision) {
 	}
 
 }
-func ExportData(result []Struct.Infered_decision) {
+func exportData(result []Struct.Infered_decision) {
 	start := time.Now()
 	ExportCSV("exofficioReview", exofficioReview)
 	ExportCSV("diligence", diligence)
